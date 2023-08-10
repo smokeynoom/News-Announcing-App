@@ -1,0 +1,29 @@
+<!DOCTYPE html>
+<html>
+
+<head>
+      <title>News Announcing App</title>
+      <link rel="stylesheet" type="text/css" href="{{ url_for('static', filename='style.css') }}">
+</head>
+
+<body>
+      <h1>News Announcements</h1>
+      <form method="POST">
+            <p><label for="title">Title</label><br></p>
+            <input type="text" id="title" name="title" placeholder="Enter the title" required><br><br>
+            <p><label for="content">Content</label><br></p>
+            <textarea id="content" name="content" rows="4" placeholder="Enter the content" required></textarea><br><br>
+            <div  class="btn btn-special"><span><input type="submit" value="Announce" id="button"><span></div>
+      </form>
+      <h2>Announcements</h2>
+      <ul>
+            {% for announcement in announcements %}
+            <li class="glow-on-hover">
+                  <strong>{{ announcement.title }}</strong><br>
+                  {{ announcement.content | safe}}
+            </li>
+            {% endfor %}
+      </ul>
+</body>
+
+</html>
